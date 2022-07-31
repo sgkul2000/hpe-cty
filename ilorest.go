@@ -4,9 +4,11 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"github.com/go-resty/resty/v2"
+	"github.com/go-resty/resty/v2" //Package resty provides simple HTTP and REST client for Go inspired by Ruby rest-client.
+	//Reference for resty: https://pkg.go.dev/github.com/go-resty/resty
 )
 
+//creating a struct which contains client's details
 type RFClient struct {
 	BaseUrl       string `json:"baseUrl"`
 	UserName      string `json:"userName"`
@@ -15,11 +17,11 @@ type RFClient struct {
 	DefaultPrefix string `json:"defaultPrefix"`
 	Timeout       int    `json:"timeout"`
 	// concurrent int `json:"concurrent"`
-	Proxy            string `json:"proxy"`
-	SessionKey       string `json:"sessionKey"`
-	AuthorizationKey string `json:"authorizationKey"`
-	SessionLocation  string `json:"sessionLocation"`
-	rest             *resty.Client
+	Proxy            string        `json:"proxy"`
+	SessionKey       string        `json:"sessionKey"`
+	AuthorizationKey string        `json:"authorizationKey"` //for authorization
+	SessionLocation  string        `json:"sessionLocation"`
+	rest             *resty.Client //resty client object
 }
 
 func NewRFClient(config RFClient) *RFClient {
@@ -38,13 +40,15 @@ func NewRFClient(config RFClient) *RFClient {
 
 type requestOptions struct {
 	Method      string
-	Path        string
-	Body        interface{}
-	QueryParams map[string]string
-	Headers     map[string]string
+	Path        string            //relative URI of RESTful/Redfish
+	Body        interface{}       //body
+	QueryParams map[string]string //query parameters
+	Headers     map[string]string //Additional headers can be passed-in, default to null
 	Timeout     int
 }
 
+// Interface are the custom type that is used to specify a set of one or more method signatures which are allowed to create a variable of an
+// interface type and this variable can be assigned with a concrete type value that has the methods the interface requires.
 type RFClientInterface interface {
 	Get(path string, queryParams map[string]string, headers map[string]string, timeout int) (*resty.Response, error)
 }
@@ -62,10 +66,11 @@ func (c *RFClient) Get(path string, queryParams map[string]string, headers map[s
 
 	_, err := c.rest.R().SetQueryParams(opts.QueryParams).SetHeaders(opts.Headers).SetResult(&output).Get(c.BaseUrl + opts.Path)
 	if err != nil {
+		//if there is an error
 		fmt.Println(err)
 		return nil, err
 	}
-	return output, nil
+	return output, nil //if no error it returns the output
 }
 
 // Login logs a person into the olorest server. it supports basic authentication and auth key authentication
