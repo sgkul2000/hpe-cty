@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/sgkul2000/hpe-cty/internal/redfish"
+	ilorest "github.com/sgkul2000/hpe-cty"
 )
 
 func main() {
-	client := redfish.NewRFClient((redfish.RFClient{
+	client := ilorest.NewRFClient((ilorest.RFClient{
 		BaseUrl:       "http://localhost:8000/redfish/v1",
 		UserName:      "",
 		Password:      "",
@@ -19,7 +19,7 @@ func main() {
 	}))
 	fmt.Println(client)
 
-	response, err := client.Get("/", map[string]string{}, map[string]string{}, 10)
+	response, err := client.Get("/UpdateService", map[string]string{}, map[string]string{}, 10)
 	if err != nil {
 		fmt.Println(err)
 	}
