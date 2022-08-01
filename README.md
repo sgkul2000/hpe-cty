@@ -4,7 +4,7 @@ GOLang library for HPE iLO Restful Operations<br>
 (Team members: Aman Narayan Singh, Swathi BJ, Aditya Mishra, Shreesh Kulkarni)
 
 # How this idea matters to HPE: <br>
-HPE is leader in server software which comprises of <b>Integrated Lights out(iLO)</b>.  To manage iLO using Restful Redfish APIs, Golang library is the first step. Library should be independently used to develop new Golang tools to manage HPE servers.
+HPE is leader in server software which comprises of <b>Integrated Lights out(iLO)</b>. To manage iLO using Restful Redfish APIs, Golang library is the first step. This library could be independently used to develop new Golang tools to manage HPE servers.
 
 # Phase 1
 <b>Objective</b>:<br> Learning about Golang, Restful, Redfish, Client/Server etc.<br>
@@ -37,7 +37,7 @@ Feature Specific Template link of the project: <a href="https://drive.google.com
 •	https://github.com/HewlettPackard/python-ilorest-library/tree/master/examples/Redfish/<br>
 •	https://hewlettpackard.github.io/ilo-rest-api-docs/ilo5/<br>
 •	https://www.dmtf.org/standards/redfish<br>
- ## Requirements
+<h2>Requirements</h2>
 
  - Install golang
 
