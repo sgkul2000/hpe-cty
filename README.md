@@ -19,9 +19,9 @@ HPE is leader in server software which comprises of <b>Integrated Lights out(iLO
 
 <h2>Deliverable:</h2><br> Design document of Golang library for Rest/Redfish.<br>
 
-So hereby I am attaching the ppt for the project understanding: <a href="https://docs.google.com/presentation/d/1B4R3KPjgumXNBsLDlwrfHBF1gBGHn-pY/edit?usp=sharing&ouid=111943377070889195268&rtpof=true&sd=true">Click here to go to the PPT</a>
+So hereby I am attaching the ppt for the project understanding: <a href="https://docs.google.com/presentation/d/1txHXZgsGbmgA1qwHUGZvHK2J1Tivh_z0/edit?usp=sharing&ouid=105450876100971092600&rtpof=true&sd=true">Click here to go to the PPT</a>
 <br>
-Feature Specific Template link of the project: <a href="https://docs.google.com/document/d/1uXjuAGccvtID8626DWy_33akP-vfgpAuCmaDHO2bhhM/edit#">Feature Specific Template</a><br>
+Feature Specific Template link of the project: <a href="https://drive.google.com/file/d/1-atuWjaDJ355ayWXu7W0nE5bBJZxg0YE/view?usp=sharing">Feature Specific Template</a><br>
 # Phase 2
 <b>Objective</b>: Coding and debugging/testing<br> 
 <b>Description:</b><br> 
