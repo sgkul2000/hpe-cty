@@ -51,8 +51,7 @@ type requestOptions struct {
 // interface type and this variable can be assigned with a concrete type value that has the methods the interface requires.
 type RFClientInterface interface {
 	Get(path string, queryParams map[string]string, headers map[string]string, timeout int) (*resty.Response, error)
-	Patch(path string, queryParams map[string]string, headers map[string]string, timeout int) (*resty.Response, error)
-
+	Patch(path string, body map[string]interface{}, queryParams map[string]string, headers map[string]string, timeout int) (*resty.Response, error)
 }
 
 // Get makes a get request to the ilorest server
@@ -75,9 +74,10 @@ func (c *RFClient) Get(path string, queryParams map[string]string, headers map[s
 	return output, nil //if no error it returns the output
 }
 
-func (c *RFClient) Patch(path string, queryParams map[string]string, headers map[string]string, timeout int) (map[string]interface{}, error) {
+func (c *RFClient) Patch(path string, body map[string]interface{}, queryParams map[string]string, headers map[string]string, timeout int) (map[string]interface{}, error) {
 	opts := requestOptions{
 		Method:      "PATCH",
+		Body:        body,
 		Path:        path,
 		QueryParams: queryParams,
 		Headers:     headers,
@@ -85,13 +85,13 @@ func (c *RFClient) Patch(path string, queryParams map[string]string, headers map
 	}
 	output := map[string]interface{}{}
 
-	_, err := c.rest.R().SetQueryParams(opts.QueryParams).SetHeaders(opts.Headers).SetResult(&output).Patch(c.BaseUrl + opts.Path)
+	_, err := c.rest.R().SetQueryParams(opts.QueryParams).SetBody(opts.Body).SetHeaders(opts.Headers).SetResult(&output).Patch(c.BaseUrl + opts.Path)
 	if err != nil {
-		
+
 		fmt.Println(err)
 		return nil, err
 	}
-	return output, nil 
+	return output, nil
 }
 
 // Login logs a person into the olorest server. it supports basic authentication and auth key authentication
