@@ -1,3 +1,0 @@
-package ilorest
-
-var Auth = 
